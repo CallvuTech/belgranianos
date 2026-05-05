@@ -7,7 +7,7 @@ Sitio institucional del movimiento Belgranianos del Azul, que impulsa la declara
 - HTML5 + CSS3 + JavaScript vanilla (sin framework)
 - Hosting: Cloudflare Pages (deploy automático desde `main`)
 - Email transaccional: Brevo API v3
-- Dominio: belgranianos.com.ar (Nic.ar → Cloudflare DNS)
+- Dominio: www.belgranianos.com.ar (Nic.ar → Cloudflare DNS)
 
 ## Estructura
 

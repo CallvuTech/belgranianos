@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://belgranianos.com.ar/sitemap.xml
+Sitemap: https://www.belgranianos.com.ar/sitemap.xml
