@@ -156,6 +156,18 @@ header h1 {
   opacity: 0.88;
 }
 
+/* Global links */
+a {
+  color: var(--navy-claro);
+  text-decoration-color: color-mix(in srgb, var(--navy-claro) 35%, transparent);
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+a:hover {
+  color: var(--navy);
+  text-decoration-color: var(--navy);
+}
+
 /* Sections */
 .section {
   padding: 4rem 0;
@@ -178,6 +190,16 @@ header h1 {
 
 .section--navy .section-intro {
   color: rgba(200,225,245,0.85);
+}
+
+.section--navy a {
+  color: #a8c8f0;
+  text-decoration-color: color-mix(in srgb, #a8c8f0 40%, transparent);
+}
+
+.section--navy a:hover {
+  color: white;
+  text-decoration-color: white;
 }
 
 .section h2 {
@@ -501,17 +523,17 @@ button[type="submit"]:focus-visible {
   color: var(--texto-suave);
 }
 
-.contact-email a {
-  color: var(--navy-claro);
-  text-decoration: none;
-}
-
-.contact-email a:hover {
-  text-decoration: underline;
+blockquote footer {
+  background: none;
+  color: inherit;
+  text-align: left;
+  padding: 0.5rem 0 0;
+  font-size: 0.9rem;
+  font-style: normal;
 }
 
 /* Footer */
-footer {
+body > footer {
   background: var(--navy);
   color: #c8ddf0;
   text-align: center;
@@ -519,18 +541,18 @@ footer {
   font-size: 0.9rem;
 }
 
-footer .container {
+body > footer .container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-footer a {
+body > footer a {
   color: #a8c8f0;
   text-decoration: none;
 }
 
-footer a:hover {
+body > footer a:hover {
   text-decoration: underline;
 }
 
