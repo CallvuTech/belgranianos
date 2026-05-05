@@ -17,9 +17,21 @@ export async function onRequestPost(context) {
     });
   }
 
+  // Honeypot: bots fill hidden fields, humans don't
+  if (body.website) {
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   const nombre = (body.nombre ?? '').trim();
+  const email = (body.email ?? '').trim();
   const mensaje = (body.mensaje ?? '').trim();
-  if (!nombre || !mensaje || nombre.length > 100 || mensaje.length > 2000) {
+
+  if (!nombre || !email || !mensaje ||
+      nombre.length > 100 || email.length > 200 || mensaje.length > 2000 ||
+      !email.includes('@')) {
     return new Response(JSON.stringify({ ok: false, error: 'missing fields' }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
@@ -37,8 +49,9 @@ export async function onRequestPost(context) {
       body: JSON.stringify({
         sender: { name: 'Web Belgranianos del Azul', email: 'contacto@belgranianos.com.ar' },
         to: [{ email: 'contacto@belgranianos.com.ar' }],
+        replyTo: { email, name: nombre },
         subject: `Mensaje de ${nombre} — Belgranianos del Azul`,
-        textContent: `Nombre: ${nombre}\n\n${mensaje}`,
+        textContent: `Nombre: ${nombre}\nEmail: ${email}\n\n${mensaje}`,
       }),
     });
   } catch (err) {
@@ -50,8 +63,7 @@ export async function onRequestPost(context) {
   }
 
   if (!res.ok) {
-    const detail = await res.text().catch(() => '');
-    console.error('Brevo error', res.status, detail);
+    console.error('Brevo error', res.status);
     return new Response(JSON.stringify({ ok: false, error: 'brevo error' }), {
       status: 502,
       headers: { 'Content-Type': 'application/json' },

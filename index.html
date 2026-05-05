@@ -14,7 +14,7 @@
 </head>
 <body>
 
-  <nav class="nav">
+  <nav class="nav" aria-label="Principal">
     <div class="container nav-inner">
       <a href="#quienes-somos">Quiénes somos</a>
       <a href="#por-que-azul">Por qué Azul</a>
@@ -49,6 +49,7 @@
 
         <blockquote>
           "Azul no es solo la ciudad del Quijote. Es también, y con igual derecho histórico, la tierra de los Belgrano."
+          <footer>— <cite><a href="https://losbelgranoyelazul.blogspot.com/" target="_blank" rel="noopener noreferrer">Los Belgrano y el Azul</a></cite></footer>
         </blockquote>
       </div>
     </section>
@@ -223,9 +224,14 @@
             <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" maxlength="100" required>
           </div>
           <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" maxlength="200" required>
+          </div>
+          <div class="field">
             <label for="mensaje">Mensaje</label>
             <textarea id="mensaje" name="mensaje" placeholder="¿Querés sumarte a la iniciativa? ¿Tenés información histórica para aportar? Escribinos." rows="5" maxlength="2000" required></textarea>
           </div>
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
           <button type="submit" id="submit-btn">Enviar mensaje</button>
           <p id="form-status" role="status" aria-live="polite"></p>
         </form>
